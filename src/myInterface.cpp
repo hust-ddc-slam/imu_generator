@@ -22,7 +22,7 @@ void loadControlPoints(const string filename, std::vector<Eigen::VectorXd>& traj
         std::string field;
         Eigen::Matrix<double, 8, 1> data;
         
-        // Loop through this line (timestamp(s) tx ty tz qx qy qz qw)
+        // Loop through this line (timestamp(s) tx ty tz qw qx qy qz)   (Attention: JPL format for open-vins)
         while (std::getline(s, field, ',')) {
             // Skip if empty
             if (field.empty() || i >= data.rows())
@@ -33,6 +33,13 @@ void loadControlPoints(const string filename, std::vector<Eigen::VectorXd>& traj
         }
         // Only a valid line if we have all the parameters
         if (i > 7) {                        // format: ts, x,y,z, qx,qy,qz,qw
+            // Convert Hamilton to JPL ----- by Dongy
+            double qw = data(4);
+            double qx(data(5)), qy(data(6)), qz(data(7));
+            data(4) = -qx;
+            data(5) = -qy;
+            data(6) = -qz;
+            data(7) = qw;
             traj_data.push_back(data);
         }
     }
