@@ -20,8 +20,8 @@ cmake .. && make
 **轨迹格式**  
 
 轨迹格式采用：ts,tx,ty,tz,qw,qx,qy,qz  
-即：时间(s)，平移的xyz(m)，旋转四元数(Halmiton格式)，全部为：轨迹的姿态在世界系下的表示。
-(Attention: Openvins's using JPL format. Need a convertion.)
+即：时间(s)，平移的xyz(m)，旋转四元数(Hamilton格式)，全部为：轨迹的姿态在世界系下的表示。  
+(注意：openvins采用的是JPL四元数，因此输入Hamilton时，在`myInterface`中的代码进行了转化：xyz取负号，qw换位置；同时，若需要输出pose，则也需要转回Hamilton形式。)
 
 **轨迹插值与数据生成**  
 
