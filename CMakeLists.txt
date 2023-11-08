@@ -9,6 +9,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 include_directories(
     include
+    /usr/local/include/eigen3          # Eigen
     ${PROJECT_SOURCE_DIR}/include
     ${catkin_INCLUDE_DIRS}
 )
@@ -22,3 +23,8 @@ add_executable(gen_imu
     src/Simulator.cpp
 )
 target_link_libraries(gen_imu)
+
+add_executable(vicon_convertor
+    src/vicon_data_convertor/convertor.cpp
+)
+target_link_libraries(vicon_convertor)

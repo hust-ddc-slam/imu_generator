@@ -32,7 +32,7 @@ void loadControlPoints(const string filename, std::vector<Eigen::VectorXd>& traj
             i++;
         }
         // Only a valid line if we have all the parameters
-        if (i > 7) {                        // format: ts, x,y,z, qx,qy,qz,qw
+        if (i == 8) {                        // format: ts, x,y,z, qx,qy,qz,qw
             // Convert Hamilton to JPL ----- by Dongy
             double qw = data(4);
             double qx(data(5)), qy(data(6)), qz(data(7));

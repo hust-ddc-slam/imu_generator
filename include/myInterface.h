@@ -62,7 +62,7 @@ class MyParam{
 public:
     MyParam():sim_freq_imu(100), sim_freq_cam(10)
     {
-        sim_distance_threshold = 1.0;               // when simulate, skip some distance at the beginning.
+        sim_distance_threshold = 0.01;               // when simulate, skip some distance at the beginning.
         sim_traj_path = "/default/input/path";
     }
 

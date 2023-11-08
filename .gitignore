@@ -1,6 +1,7 @@
-
+data/
 build/
 *.csv
+*.asv
 
 # Prerequisites
 *.d
