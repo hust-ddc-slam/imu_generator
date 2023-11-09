@@ -23,7 +23,7 @@ int main(int argc, char **argv){
 
 
     MyParam my_param;                       // init MyParam, includes IMU settings.
-    my_param.sim_traj_path = "/home/larrydong/codeGit/extrinsics_eskf/imu_generator/data/imu_vicon/rig05-trajectory.csv";   // input quart format.
+    my_param.sim_traj_path = "/home/larrydong/codeGit/extrinsics_eskf/imu_generator/data/imu_vicon/new3-trajectory.csv";   // input quart format.
     Simulator simulator(my_param);          // initializa simulator.
     
     vector<ImuData> imus;
@@ -42,7 +42,7 @@ int main(int argc, char **argv){
     }
 
     cout << "Generated imu: " << imus.size() << endl;
-    string imu_save_path = "/home/larrydong/codeGit/extrinsics_eskf/imu_generator/data/imu_vicon/simulation-05.csv";
+    string imu_save_path = "/home/larrydong/codeGit/extrinsics_eskf/imu_generator/data/imu_vicon/simulation-new3.csv";
     saveImu(imu_save_path, imus);
 
     cout << "==> Done" << endl;

@@ -15,7 +15,7 @@ xsens_record_ahead = 0;            % skip seconds data.
 
 
 %% Plot Xsens IMU
-imu_filename = "MT_0080003F51_004-000.txt";
+imu_filename = "MT_0080003F51_000-000.txt";
 
 filename = base_data_folder + imu_filename;
 % format: PacketCounter,SampleTimeFine,Acc_X,Acc_Y,Acc_Z,Gyr_X,Gyr_Y,Gyr_Z
@@ -58,7 +58,7 @@ title('Gyroscope (from Xsens)');
 
 
 %% Plot openvins simulation
-imu_filename = "simulation-05.csv";
+imu_filename = "simulation-new3.csv";
 % ORB-slam3's format: time[ns], wx(rad/s), wy, wz, ax(m/s2), ay, az
 
 filename = base_data_folder + imu_filename;

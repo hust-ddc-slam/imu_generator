@@ -4,7 +4,7 @@ close all;
 
 % load trajectory.
 %% original
-filename = '/home/larrydong/imu_ws/src/imu_simulation/data/trajectory.csv';
+filename = '/home/larrydong/codeGit/extrinsics_eskf/imu_generator/data/imu_vicon/rig05-trajectory.csv';
 data = readmatrix(filename,'Range', 2);
 ts = data(:,1);
 roll = data(:,2);

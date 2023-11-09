@@ -7,8 +7,8 @@
 using namespace std;
 
 
-string input_imu_filename = "/home/larrydong/codeGit/extrinsics_eskf/imu_generator/data/imu_vicon/rig05.csv";
-string output_trajectory_filename = "/home/larrydong/codeGit/extrinsics_eskf/imu_generator/data/imu_vicon/rig05-trajectory.csv";
+string input_imu_filename = "/home/larrydong/codeGit/extrinsics_eskf/imu_generator/data/imu_vicon/1109-rig-new3.csv";
+string output_trajectory_filename = "/home/larrydong/codeGit/extrinsics_eskf/imu_generator/data/imu_vicon/new3-trajectory.csv";
 
 
 int main() {
@@ -51,17 +51,8 @@ int main() {
         //      << "tx " << tx << ", ty " << ty << ", tz " << tz << endl;
         Eigen::Vector3d euler_angles(rx, ry, rz);
         euler_angles = euler_angles / 180 * 3.1415926;
-        // Eigen::Quaterniond quaternion = Eigen::AngleAxisd(euler_angles[0], Eigen::Vector3d::UnitZ()) *
-        //                                  Eigen::AngleAxisd(euler_angles[1], Eigen::Vector3d::UnitY()) *
-        //                                  Eigen::AngleAxisd(euler_angles[2], Eigen::Vector3d::UnitX());
-
-        // XYZ euler angle TODO:
-        Eigen::Quaterniond q1 = Eigen::AngleAxisd(euler_angles[2], Eigen::Vector3d::UnitZ()) *
-                                    Eigen::AngleAxisd(euler_angles[1], Eigen::Vector3d::UnitY()) *
-                                    Eigen::AngleAxisd(euler_angles[0], Eigen::Vector3d::UnitX());
-        Eigen::Matrix3d R(q1);
-        // Eigen::Quaterniond quaternion(R.transpose());
-        Eigen::Quaterniond quaternion(R);
+        Eigen::Quaterniond quaternion;
+        quaternion = Eigen::AngleAxisd(euler_angles.norm(), euler_angles.normalized());
 
         // openvins trajectory format: ts,tx,ty,tz,qw,qx,qy,qz(Halmiton)
         data(i, 0) = tx*1e-2;
